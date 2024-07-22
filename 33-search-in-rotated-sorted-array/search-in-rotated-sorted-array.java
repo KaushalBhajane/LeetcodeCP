@@ -14,10 +14,10 @@ class Solution {
         int low = 0, high = n - 1;
         int mid = low + (high - low) / 2;
         while (low < high) {
-            if (nums[mid] >= nums[0]) {
-                low = mid + 1;
-            } else {
+            if (nums[mid] < nums[high]) {
                 high = mid;
+            } else {
+                low = mid+1;
             }
             mid = low + (high - low) / 2;
         }
