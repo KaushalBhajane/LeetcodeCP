@@ -1,7 +1,6 @@
 import java.util.*;
 class Solution 
 {
-	// This function check if the character c is alpha numberic
     public static boolean isAlphaNumeric(char c) 
     {
         if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && !(c >= '0' && c <= '9')) 
@@ -14,12 +13,10 @@ class Solution
 
     public static void toLowercase(StringBuilder str) 
     {
-        // Traverse through the string s
         for (int i = 0; i < str.length(); i++)
         {
             char ch = str.charAt(i);
             
-            // Check if ch is a uppercase letter
             if (ch <= 'Z' && ch >= 'A')
             {
                 char c = Character.toLowerCase(ch);
@@ -30,11 +27,9 @@ class Solution
 
 	public static boolean isPalindrome(String s) 
     {
-        // Convert uppercase letter into lowercase letter
         StringBuilder str = new StringBuilder(s);
         toLowercase(str);
         
-        // Find the reverse string of s
         StringBuilder reversedS = new StringBuilder(str);
         reversedS.reverse();
 
@@ -44,14 +39,14 @@ class Solution
 
         while (i < n && j < n)
         {
-            if (!isAlphaNumeric(str.charAt(i)))
+            Boolean resultOfStr = isAlphaNumeric(str.charAt(i));
+            Boolean resultOfReverse = isAlphaNumeric(reversedS.charAt(j));
+            if (resultOfStr == false)
             {
-                // ith pointer points to invalid character.
                 i++;
             }
-            else if (!isAlphaNumeric(reversedS.charAt(j)))
+            else if (resultOfReverse == false)
             {
-                // jth pointer points to invalid character.
                 j++;
             }
             else if (str.charAt(i) == reversedS.charAt(j))
