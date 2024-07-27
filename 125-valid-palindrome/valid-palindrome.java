@@ -1,68 +1,44 @@
-import java.util.*;
-class Solution 
-{
-    public static boolean isAlphaNumeric(char c) 
-    {
-        if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && !(c >= '0' && c <= '9')) 
-        {
+class Solution {
+    public boolean isAlphaNumeric(char ch) {
+        if(!(ch >= 'A' && ch <= 'Z') && !(ch >= 'a' && ch <= 'z') && !(ch >= '0' && ch <= '9')) {
             return false;
         }
-        
-        return true;
+        else {
+            return true;
+        }
     }
-
-    public static void toLowercase(StringBuilder str) 
-    {
-        for (int i = 0; i < str.length(); i++)
-        {
+    public void toLowerCase(StringBuilder str) {
+        for(int i=0; i<str.length(); i++) {
             char ch = str.charAt(i);
-            
-            if (ch <= 'Z' && ch >= 'A')
-            {
-                char c = Character.toLowerCase(ch);
-                str.setCharAt(i, c);
+            if(ch >= 'A' && ch <= 'Z') {
+                char x = Character.toLowerCase(ch);
+                str.setCharAt(i, x);
             }
         }
     }
-
-	public static boolean isPalindrome(String s) 
-    {
+    public boolean isPalindrome(String s) {
         StringBuilder str = new StringBuilder(s);
-        toLowercase(str);
-        
-        StringBuilder reversedS = new StringBuilder(str);
-        reversedS.reverse();
-
-        int n = s.length();
-        int i = 0;
-        int j = 0;
-
-        while (i < n && j < n)
-        {
-            Boolean resultOfStr = isAlphaNumeric(str.charAt(i));
-            Boolean resultOfReverse = isAlphaNumeric(reversedS.charAt(j));
-            if (resultOfStr == false)
-            {
+        toLowerCase(str);
+        StringBuilder reversedStr = new StringBuilder(str);
+        reversedStr.reverse();
+        int i=0, j=0, n=s.length();
+        while(i < n && j < n) {
+            Boolean result1 = isAlphaNumeric(str.charAt(i));
+            Boolean result2 = isAlphaNumeric(reversedStr.charAt(j));
+            if(result1 == false) {
                 i++;
             }
-            else if (resultOfReverse == false)
-            {
+            else if(result2 == false){
                 j++;
             }
-            else if (str.charAt(i) == reversedS.charAt(j))
-            {
+            else if(str.charAt(i) == reversedStr.charAt(j)) {
                 i++;
                 j++;
             }
-            else
-            {
+            else {
                 return false;
             }
-        }
-        
+        } 
         return true;
     }
 }
-
-
-
