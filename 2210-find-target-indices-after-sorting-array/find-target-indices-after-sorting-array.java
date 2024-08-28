@@ -1,35 +1,38 @@
 import java.util.*;
 class Solution {
     public List<Integer> targetIndices(int[] nums, int target) {
-        List<Integer> list = new ArrayList<>();
         Arrays.sort(nums);
-        int firstOcc = findFirstOcc(nums, target);
-        if(firstOcc==-1) {
-            return list;
-        }
-        for(int i=firstOcc; i<nums.length && nums[i] == target; i++) {
-            list.add(i);
-        }
-        return list;
-
-    }
-    public int findFirstOcc(int[] nums, int key) {
+        List<Integer> result = new ArrayList<>();
         int low = 0, high = nums.length-1;
-        int mid = low + (high-low)/2;
-        int ans=-1;
-        while(low<=high) {
-            if(nums[mid]==key) {
-                ans=mid;
-                high=mid-1;
-            }
-            else if(key>nums[mid]) {
-                low=mid+1;
+        int firstOcc = findFirstOcc(nums, low, high, target);
+        if(firstOcc == -1) {
+            return result;
+        }
+        for(int i=firstOcc; i<nums.length && target == nums[i]; i++) {
+            result.add(i);
+        }
+        return result;
+    }
+    public int findFirstOcc(int[] nums, int low, int high, int target) {
+        int firstOcc = -1;
+        if(low>high) {
+            return -1;
+        }
+        int mid = low+(high-low)/2;
+        if(nums[mid] == target) {
+            firstOcc = findFirstOcc(nums, low, mid-1, target);
+            if(firstOcc == -1) {
+                return mid;
             }
             else {
-                high=mid-1;
+                return firstOcc;
             }
-            mid = low + (high-low)/2;
         }
-        return ans;
+        else if(target > nums[mid]) {
+            return findFirstOcc(nums, mid+1, high, target);
+        }
+        else {
+            return findFirstOcc(nums, low, mid-1, target);
+        }
     }
 }
