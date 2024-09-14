@@ -15,7 +15,8 @@ class Solution {
         int[] resultArray = new int[result.size()];
         int i = 0;
         for (int num : result) {
-            resultArray[i++] = num;
+            resultArray[i] = num;
+            i++;
         }
         
         return resultArray;
