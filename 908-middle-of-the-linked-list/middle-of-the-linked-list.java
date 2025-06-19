@@ -16,10 +16,10 @@ class Solution {
             count++;
             temp = temp.next;
         }
+        count/=2;
         temp = head;
-        count = count/2;
-        while(count != 0) {
-            temp = temp.next;
+        while(count!=0) {
+            temp=temp.next;
             count--;
         }
         return temp;
