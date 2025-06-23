@@ -23,7 +23,7 @@ public class Solution {
             }
         }
         slow = head;
-        if(fast == null || fast.next == null) {
+        if(flag == false) {
             return null;
         }
         ListNode prev = null;
