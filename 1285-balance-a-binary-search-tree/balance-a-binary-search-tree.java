@@ -16,7 +16,7 @@
 class Solution {
     TreeNode balanceBST(TreeNode root) {
         // Add your code here.
-        
+        // Refer the note for quick revision
         ArrayList<Integer> sortedNodes = new ArrayList<>();
         inorder(root, sortedNodes);
         
